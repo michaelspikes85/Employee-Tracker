@@ -1,6 +1,6 @@
 const mysql = require("mysql");
 const inquirer = require("inquirer");
-const cTable = require("console.table");
+// const cTable = require("console.table");
 
   
 
@@ -115,7 +115,35 @@ function runSearch()    {
 }
 
 function personSearch() {
-    let query = "SELECT * FROM person";
+    let query = "SELECT * FROM person INNER JOIN position on person.position_id = position.id";   
+    "SELECT * FROM position INNER JOIN house on position.house_id = house.id;";
+    connection.query(query, function(err, res) {
+      if (err) throw err;
+      console.table(res);
+      runSearch();
+    });
+  }
+
+  function houseSearch() {
+    let query = "SELECT * FROM house ORDER house";
+    connection.query(query, function(err, res) {
+      if (err) throw err;
+      console.table(res);
+      runSearch();
+    });
+  }
+
+  function loyaltySearch() {
+    let query = 
+    connection.query(query, function(err, res) {
+      if (err) throw err;
+      console.table(res);
+      runSearch();
+    });
+  }
+
+  function positionSearch() {
+    let query = "SELECT * FROM position";
     connection.query(query, function(err, res) {
       if (err) throw err;
       console.table(res);
